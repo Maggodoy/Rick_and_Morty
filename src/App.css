@@ -1,5 +1,16 @@
 .App {
   text-align: center;
+  width: 100%;
+  height: 100vh;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-image: url('C:\Users\Hector-Notebook\OneDrive\Escritorio\rick_and_morty\src\assets\fondoRnM.png');
+  background-color: transparent;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
 .App-logo {
@@ -25,7 +36,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #03f84d;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +46,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+p {
+  width: 100%;
+  padding: 6px 1px; 
+  font: optional;
+  font-size: medium;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color:rgb(14, 236, 14)
 }

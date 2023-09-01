@@ -1,0 +1,115 @@
+.cardConteiner{   /* el diseño de mis tarjetas*/
+    height: 200px;
+    width: 100px;
+    align-items: center; /* alineacion */
+    background-image: url('c:\Users\Hector-Notebook\Desktop\fondocard.jpg');
+    background-position: center; /*se centra para que no se repita*/
+    border: 10px inset rgb(108, 52, 131, .4);
+    border-radius: 0 5% 0 5%;
+    padding: 20px;
+    cursor: pointer;
+    -moz-osx-font-smoothing: grayscale; 
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.15s ease-out;
+}
+
+.cardConteiner:hover{ /*hover es cuando el mouse se encuentra sobre el*/
+    transform: scale(1.05);
+}
+
+
+.atributes{
+
+   
+    align-items: flex-end;
+    width: 2px;
+    font-size: 7px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(144, 110, 175);
+    padding: 1px 0;
+    gap: 2%;
+    
+}
+
+
+.closeButton{
+    height: 30px;
+    width: 30px;
+    opacity: 0.7;
+    display: flex;
+    justify-content: center;
+    position: flex; /*Posicion absoluta respecto a su contenedor*/
+    top: 2px; left: 10%; right: auto;
+    background-color: rgb(33, 102, 3);
+    color: rgb(14, 236, 14);
+    border-radius: 60% 60% 60% 60%;
+    border: 3px inset rgba(122, 17, 163, 0.9);
+    padding: 0;
+}
+
+.closeButton:hover{
+   background-color: rgb(79, 250, 5 );
+   color: black;
+}
+
+.likeButton{
+    height: 30px;
+    width: 30px;
+    opacity: 0.7;
+    display: flex;
+    justify-content: center;
+    position: sticky; /*Posicion absoluta respecto a su contenedor*/
+    top: 5%; right: 10%;
+    background-color: rgb(33, 102, 3);
+    color: rgb(14, 236, 14);
+    border-radius: 60% 60% 60% 60%;
+    border: 3px inset rgba(122, 17, 163, 0.9);
+    padding: 0;
+}
+
+.likeButton:hover{
+   background-color: rgb(79, 250, 5 );
+   color: black;
+}
+
+.imageContainer{
+    position: absolute;
+    text-align: end;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.name {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    
+
+    transform: translate(-50%, -50%);
+    -webkit-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    
+}
+
+.characterImage{
+    display: block;
+    height: auto;
+    width: 100%;
+    border-radius: 45% 45% 45% 45%;
+   
+    -webkit-transition:  all 0.3s ease-in-out;
+    -ms-transition:  all 0.3s ease-in-out;
+    transition:  all 0.3s ease-in-out;
+}
+
+.imageContainer:hover{
+    opacity: 0.4;
+}
+
+.imageContainer:hover .name{
+    opacity: 1.5;
+}

@@ -1,0 +1,82 @@
+.formConteiner{  
+    display: flex; /* para que se adapte a los distintos tipos de pantalla */
+    flex-direction: column;
+    align-items: center; 
+    width: 50%; 
+    height: 50%; 
+    min-width: 150px;
+    min-height: 200px; 
+    background-position: center; 
+    background-color: rgb(108, 52, 131, .3); 
+    opacity: .2;
+    border: 3px inset rgb(108, 52, 131, .4);
+    border-radius: 5% 5% 5% 5%;
+    padding: 0;
+    cursor: pointer;
+    -moz-osx-font-smoothing: grayscale; 
+    backface-visibility: hidden;
+   
+}
+
+
+
+
+.buttonSubmit{
+    height: 30px;
+    width: 30%;
+    opacity: 0.7;
+    justify-content: right;
+    justify-content: flex-start;
+    position: center; /*Posicion absoluta respecto a su contenedor*/
+    margin-top: 30%;
+    margin-bottom: 10%;
+    background-color: rgb(33, 102, 3);
+    color: rgb(14, 236, 14);
+    border-radius: 20% 20% 20% 20%;
+    border: 3px inset rgba(122, 17, 163, 0.9);
+    padding: 0;
+    transform: translateZ(0);
+    transition: transform 0.15s ease-out;
+ 
+}
+
+.closeButton:hover{
+    background-color: rgb(79, 250, 5 );
+    color: rgba(122, 17, 163);
+    transform: scale(1.05);
+ 
+}
+
+
+.label {
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 10px 10px 20px rgba(122, 17, 163);
+    padding: 6px 1px; 
+    margin-top: initial;
+    margin-bottom: auto;
+    
+    font-family: 'myFont', Arial, sans-serif;
+    color: rgb(79, 250, 5 );
+    font-size: medium;
+
+
+   @font-face {
+      font-family: 'myFont'; 
+      src: url('https://dl.dafont.com/dl/?f=shlop') format('truetype');
+   }
+}
+  
+
+.inputContainer {
+    width: 70%;
+  border: 3px inset rgba(122, 17, 163, .2); 
+  border-radius: 7px 7px 7px 7px;
+  box-sizing: border-box;
+  box-shadow: 10px 10px 20px rgba(122, 17, 163, .4);
+  padding: 6px 1px; 
+  background-color: rgba(122, 17, 163, .4);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+

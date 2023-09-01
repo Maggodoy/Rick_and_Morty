@@ -1,3 +1,3 @@
-# https://www.robotstxt.org/robotstxt.html
+# https://www.dafont.com/es/shlop.font?text=Rick+and+Morty
 User-agent: *
 Disallow:
