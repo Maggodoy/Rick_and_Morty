@@ -1,52 +1,79 @@
-import { useState } from "react";
-import validation from "../validation/Validation";
+import {useState} from "react";
+import {validar} from "../validation/Validation";
 import style from "./form.module.css";
 
-const Form = ({login}) => {
-    const [errors, setErrors] = useState({});
-    const [userData, setUserData] = useState({
-        email: '',
-        password: ''
+function Login({login}) {
+  const [userData, setUserData] = useState({
+    email: " ",
+    password: " ",
+  });
+
+  const [errors, setErrors] = useState({
+    email: "Email required", //
+    password: "Password required", //
+  });
+
+  function inputHandler(e) {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value,
     });
 
-    const handleChange = (event) => {
-        setUserData({
-            ...userData,
-            [event.target.name]: event.target.value
-        })
+    setErrors(
+      validar({
+        ...userData,
+        [e.target.name]: e.target.value,
+      })
+    );
+  }
 
-        setErrors(validation({
-           ...userData,
-           [event.target.name]: event.target.value
-        }))
+  function submitHandler(e) {
+    e.preventDefault();
+
+    login(userData);
+  }
+
+  function disableHandler() {
+    for (let error in errors) {
+      if (errors[error] !== "") return true;
     }
-
-    const handleSubmit = (event) => {
-         event.preventDefault();
-         login(userData);
-    }
-
-    return(
-      <div className={style.body}>
-       <form className={style.formConteiner} onSubmit={handleSubmit}>
-          <label className={style.label} htmlFor="email">Email: </label>
-          <input className={style.inputContainer} type="email" name='email' value={userData.email} onChange={handleChange} />
-         
-             {errors.email && <p>{errors.email}</p>}
-         
-          <br/>
-          <label className={style.label} htmlFor="password">Password: </label>
-          
-          <input className={style.inputContainer} type="text" name="password" value={userData.password} onChange={handleChange} />
-          
-             {errors.password && <p>{errors.password}</p>}
-    
-
-          <button className={style.buttonSubmit}>Submit</button>
-       </form>
-      </div>
-    )
-
+    return false; // Habilitar el botón si no se encontraron errores no vacíos.
+  }
+  
+  return (
+    <div className={style.body}>
+      <form className={style.formConteiner}onSubmit={submitHandler}>
+        <div>
+          <label className={style.font}>USERNAME</label>
+          <input className={style.input}
+            type="text"
+            name="email"
+            value={userData.email}
+            onChange={inputHandler}
+            placeholder="email"
+          />
+          <span>{errors.email}</span>
+        </div>
+        <div>
+          <label className={style.font}>PASSWORD</label>
+          <input className={style.input}
+            name="password"
+            type="password"
+            value={userData.password}
+            onChange={inputHandler}
+            placeholder="Escribe tu nombre"
+          />
+        </div>
+        {errors.password && <span>{errors.password}</span>}
+        {/* {errors.password || errors.email ? null : (
+          <button type="submit">SUBMIT</button>
+        )} */}
+        <button className={style.buttonSubmit} disabled={disableHandler()} type="submit">
+          SUBMIT
+        </button>
+      </form>
+    </div>
+  );
 }
 
-export default Form;
+export default Login;

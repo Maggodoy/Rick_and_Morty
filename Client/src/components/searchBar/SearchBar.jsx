@@ -4,17 +4,21 @@ import { SearchContainer, SearchInput, SearchIcon, SearchIconContainer } from '.
 export default function SearchBar({ onSearch }) {
     const [id, setId] = useState('');
 
-    const handleChange= (event) => {
-      setId(event.target.value)
+    const handleSearch = () => {
+      onSearch(id);
+      setId('');
     }
     
     return (
       <SearchContainer>
-      
-          <SearchInput type='search' onChange={handleChange} value={id}/>
+          <SearchInput
+            type='search'
+            onChange={(event) => setId(event.target.value)}
+            value={id}
+          />
           <SearchIconContainer>
-            <SearchIcon onClick={() => {onSearch(id); setId('')}} >Add</SearchIcon>
+            <SearchIcon onClick={handleSearch}>Add</SearchIcon>
           </SearchIconContainer>
       </SearchContainer>
     );
- }
+}

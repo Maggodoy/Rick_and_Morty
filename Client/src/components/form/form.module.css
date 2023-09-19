@@ -1,11 +1,27 @@
-.body {
+.body{
     margin: 0;   
     padding: 0;
     display: flex;
     justify-content: center; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
     height: 100vh; /* Abarcar toda la altura de la pantalla */
-    background-image: url("../../assets/fondoRnM.png");
+    background-image: url('C:\Users\Hector-Notebook\Desktop\wp6736830.webp'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;   
+   
+}
+.font{
+    display: flex;
+    font-family: 'MiFuentePersonalizada', sans-serif;
+    color: rgba(108, 52, 131);
+    text-shadow: '2px 2px 4px rgba(0, 0, 0, 0.5)';
+    font-size: 20px;
+
+}
+@font-face {
+    font-family: 'MiFuentePersonalizada';
+    src: url('C:\Users\Hector-Notebook\Desktop\get_schwifty.ttf')format('truetype');
 }
 
 .formConteiner {
@@ -14,43 +30,77 @@
     flex-direction: column;
     justify-content: center; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
-    height: 100vh;
-    width: 50%;
+    height: 80vh;
+    width: 30%;
     min-width: 150px;
     min-height: 200px;
     background-position: center;
-    background-color: rgb(108, 52, 131, .3);
-    opacity: .2;
-    border: 3px inset rgb(108, 52, 131, .4);
-    border-radius: 5% 5% 5% 5%;
+    background-color: rgba(108, 52, 131, 0.2);
+    opacity: 1;
+    border: 3px solid transparent; /* Borde inicialmente transparente */
+    border-radius: 4% 4% 4% 4%;
+    box-shadow: 0 0 1px rgba(108, 52, 131, 0.1);
     padding: 0;
     cursor: pointer;
     -moz-osx-font-smoothing: grayscale;
     backface-visibility: hidden;
+    transition: background-position 0.5s, border-color 0.5s; /* Agregar transición al borde y fondo */
+    transition: background-color 0.5s;
+    color: rgb(14, 236, 14);
 }
 
-.buttonContainer {
+.formConteiner:hover {
+    background-color: rgb(14, 236, 14, 0.1); /* Cambia el fondo a verde lima en hover */
+    border-color: rgb(14, 236, 14, 0.1); /* Cambia el borde a verde lima en hover */
+}
+
+
+.buttonSubmit {
     display: flex;
     justify-content: center; /* Centrar horizontalmente */
     margin-top: 30px;
     margin-bottom: 10px;
-}
-
-.buttonSubmit {
-    height: 30px;
-    width: 30%;
-    opacity: 0.7;
-    background-color: rgb(33, 102, 3);
+    height: auto; /* Altura automática basada en el contenido */
+    width: auto; /* Ancho automático basado en el contenido */
+    padding: 10px 20px; /* Relleno basado en proporciones */
+    font-size: 16px;
+    background-color: rgba(108, 52, 131);
     color: rgb(14, 236, 14);
-    border-radius: 20% 20% 20% 20%;
-    border: 3px inset rgba(122, 17, 163, 0.9);
-    padding: 0;
-    transform: translateZ(0);
-    transition: transform 0.15s ease-out;
+    border: 2px solid  rgb(14, 236, 14);
+    border-radius: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 10px; /* margen para separarlo de otros componentes */
+    font-family: 'MiFuentePersonalizada', sans-serif;
+    text-shadow: '2px 2px 4px rgba(0, 0, 0, 0.5)';
+    font-size: 20px;
+  }
+  
+  .buttonSubmit:hover {
+    background-color:  rgb(14, 236, 14);
+    color: rgba(108, 52, 131);
+  }
+  
+
+.input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid transparent; /* Borde transparente cuando está vacío */
+    border-radius: 10px;
+    outline: none; /* Quita el borde de enfoque predeterminado */
+    transition: border-color 0.3s; /* Transición suave para el borde */
+
+    /* Fondo borroso en verde */
+    background: rgba(0, 255, 0, 0.2);
+    backdrop-filter: blur(10px);
+    margin: 10px;
 }
 
-.closeButton:hover {
-    background-color: rgb(79, 250, 5);
-    color: rgba(122, 17, 163);
-    transform: scale(1.05);
+/* Estilos cuando el campo de entrada está enfocado (hace clic) */
+.input:focus {
+    border-color:  rgb(14, 236, 14); /* Borde verde cuando está enfocado */
 }
+
+
+
+

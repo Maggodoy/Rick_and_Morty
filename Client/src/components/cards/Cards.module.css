@@ -6,3 +6,15 @@
  grid-template-columns: 1fr 1fr 1fr 1fr;
  grid-gap: 10px;
 }
+.body{
+    margin: 0;   
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 100vh; /* Abarcar toda la altura de la pantalla */
+    background-image: url('C:\Users\Hector-Notebook\OneDrive\Escritorio\rick_and_morty\Client\src\assets\fondocard.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;   
+}   

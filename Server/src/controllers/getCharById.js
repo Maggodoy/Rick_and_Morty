@@ -1,25 +1,30 @@
+const axios = require("axios");
 
-const axios = require ('axios'); //importar 
+async function getCharById(req, res) {
+  const URL = "https://rickandmortyapi.com/api/character/";
 
-const URL = 'https://rickandmortyapi.com/api/:character/'
+  try {
+    const {id} = req.params;
+    const {data} = await axios.get(`${URL}${id}`);
 
-const getCharById = (res, req) => {
- const { id } = req.params // la peticion a la api
+    const character = {
+      id: data.id,
+      status: data.status,
+      name: data.name,
+      species: data.species,
+      location: data.location?.name,
+      origin: data.origin?.name, // asi no hay undefined
+      image: data.image,
+      gender: data.gender,
+    };
 
- axios
-    .get(`https://rickandmortyapi.com/api/character/${id}`) //la url con la qmue trabajamos
-    .then((response) => {
-      const {id, status, name, species, origin, image, gender} = response.data; //lo que necesitamos de la api
-      name
-        ? res
-            .status(200)
-            .json({id, status, name, species, origin, image, gender}) //si todo sale bien
-        : res.status(404).send("Not Found"); //si sale mal
-    })
-    .catch((error) => {
-      res.status(500).json({message: error.message}); //donde se muestra el error
-    });
+    character.name
+      ? res.status(200).json(character)
+      : res.status(404).json({message: "Not Found"});
+  } catch (error) {
+    res.status(500).json({message: error.message});
+  }
 }
 
-module.exports = getCharById; //exportar
- 
+module.exports = getCharById;
+

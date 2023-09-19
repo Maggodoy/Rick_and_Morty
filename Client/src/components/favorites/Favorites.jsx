@@ -1,54 +1,55 @@
-import Cards from "../cards/Cards";
-import { connect, useDispatch } from "react-redux";
-import { filterCards, orderCards } from "../../redux/actions";
-import { useState } from "react";
+// import {connect} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
+import {sortById, filterByGender, reset} from "../../redux/actions";
+import Card from "../card/Card";
 
-const Favorites = ({ myFavorites }) => {
-    const dispatch = useDispatch();
-    const [aux, setAux] = useState(false);
+function Favorites() {
+  const dispatch = useDispatch();
+  const myFavorites = useSelector((state) => state.myFavorites);
 
-    const handleOrder = (event) =>{
-        dispatch(orderCards(event.target.value));
-        setAux(true);
-    }
+  function sortHandler(event) {
+    dispatch(sortById(event.target.value));
+  }
 
-    const handleFilter = (event) => {
-        dispatch(filterCards(event.target.value))
-    }
+  function filterHandler(event) {
+    dispatch(filterByGender(event.target.value));
+  }
 
-    return (
-        <>
-        <select onChange={handleOrder}>
-                <option value="A">Ascendente</option>
-                <option value="D">Desendente</option>
-            </select>
+  function resetHandler() {
+    dispatch(reset());
+  }
 
-            <select onChange={handleFilter}>
-            <option value="all">ALL</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Genderless">Genderless</option>
-                <option value="unknown">unknown</option>
-            </select>
-
-        {
-           myFavorites?.map(fav => {
-                return(
-                   <Cards characters={myFavorites}/>
-                )
-            })
-        } 
-        </>
-    )
+  return (
+    <div>
+      <select placeholder="Gender" onChange={filterHandler}>
+        {["Male", "Female", "unknown", "Genderless"].map((gender) => (
+          <option key={gender} value={gender}>
+            {gender}
+          </option>
+        ))}
+      </select>
+      <select placeholder="Sort" onChange={sortHandler}>
+        {["Ascendente", "Descendente"].map((order) => (
+          <option key={order} value={order}>
+            {order}
+          </option>
+        ))}
+      </select>
+      <button onClick={resetHandler}>RESET</button>
+     { myFavorites?.map(fav => {
+            return (
+              <Card
+              key={fav.id}
+              id={fav.id}
+              name={fav.name}
+              species={fav.species}
+              gender={fav.gender}
+              image={fav.image}
+              onClose={fav.onClose} />
+              )})}
+      
+    </div>
+  );
 }
 
-const mapStateToProps = (state) => {
-    return {
-        myFavorites : state.myFavorites
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    null
-)(Favorites);
+export default Favorites;

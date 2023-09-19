@@ -1,24 +1,21 @@
-const validation = (userData) => {
-    const errors = {};
-
-    if(!/^[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(userData.email)){
-        errors.email= 'the entered email is not valid';
+export function validar(input) {
+    let errors = {};
+    let emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    let numbersRegex = /\d/;
+  
+    if (!emailRegex.test(input.email)) {
+      errors.email = "Invalid email";
     }
-    if(!userData.email){
-        errors.email= 'You must enter an email';
+    if (input.email.length >= 35) {
+      errors.email = "No more than 35 characters please";
     }
-    if(userData.email.length > 35){
-        errors.email='The email must not exceed 35 characters';
+    if (!numbersRegex.test(input.password)) {
+      errors.password = "Password must contain a number";
     }
-    
-    if(!/.*\d+.*/.test(userData.password)){
-        errors.password= 'the password is too short';
+    if (input.password.length < 6 || input.password.length > 10) {
+      errors.password = "Password must be between 6 and 10 characters";
     }
-    if(userData.password.length < 6 || userData.password.length > 10 ){
-        errors.password = 'the password must have between 6 and 10 characters';
-    }
-
+  
     return errors;
-}
-
-export default validation;
+  }
+  
