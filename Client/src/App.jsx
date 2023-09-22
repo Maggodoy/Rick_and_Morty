@@ -51,6 +51,7 @@ function App() {
       );
 
       if (data.name) {
+        console.log("personaje")
         setCharacters((oldChars) => [...oldChars, data]);
       } else {
         throw new Error("¡No hay personajes con este ID!");
