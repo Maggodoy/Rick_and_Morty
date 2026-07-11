@@ -1,83 +1,48 @@
-.navContainer{
-  background-color: transparent;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-}
-
-
-.linkContainer{
-        height: auto;
-        display: flex; /* para que se adapte a los distintos tipos de pantalla */
-        flex-direction: row;
-        align-items: center; /* alineacion */
-        background-position: top; /*se centra para que no se repita*/
-        width: 100%;
-        padding: 0;
-        gap: 30%;
-        cursor: pointer;
-        -moz-osx-font-smoothing: grayscale; 
-        backface-visibility: hidden;
-        transform: translateZ(0);
-        transition: transform 0.15s ease-out;
-}
-
-.linkConteiner:hover{ /*hover es cuando el mouse se encuentra sobre el*/
-        transform: scale(1.05);
-}
-    
-
-
-
-.link {
-    .label {
-        width: 100%;
-        font: optional;
-        font-size: large;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        color:rgb(14, 236, 14);
-        
-    }
-    
-}
-
-.buttonContainer {
-    width: 20%;
-    height: 30px;
-    position: relative;
+.navContainer {
+    width: 100%;
+     padding: 1.5rem;
+  
+  /* Aplicamos el mismo fondo, desenfoque y borde que en el formContainer */
+    background: rgba(20, 20, 30, 0.5); 
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(14, 236, 14, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  
+  /* Posicionamiento */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  
+  /* Layout */
     display: flex;
-    justify-content: flex-start;
+        flex-direction: column; 
+  gap: 25px; 
+  align-items: center;
+}
+
+.linkContainer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.navButton {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: rgb(14, 236, 14);
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+    background: rgba(122, 17, 163, 0.2);
+    border: 1px solid rgba(14, 236, 14, 0.3);
+    border-radius: 50px;
+    transition: all 0.3s ease;
     cursor: pointer;
-    background-color: rgba(122, 17, 163);
-    padding: 5px;
-    border: inset rgba(122, 17, 163) 5px;
-    border-radius: 10px 10px 10px 10px;
-    
-}   
-     
-.buttonContainer:hover {
-     box-shadow: insert 0 0 10px rgba(122, 17, 163);
 }
 
-
-.buttonOnlog{
-  width: 20%;
-  height: 20px;
-  justify-content: flex-start;
-  background-color: rgba(122, 17, 163, 0.3);
-  border:2px inset rgba(122, 17, 163, 0.5);
-  border-radius: 10px 10px 10px 10px;
-  box-shadow: insert 0 0 10px rgba(122, 17, 163);
-  font-size: medium;
-  font-weight: lighter;
-  color:rgba(122, 17, 163, 0.5);
- 
-  fill: rgba(122, 17, 163, 0.7);
+.navButton:hover {
+    background: rgba(122, 17, 163, 0.4);
+    border-color: rgb(14, 236, 14);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(14, 236, 14, 0.2);
 }
-
-.buttonOnlog:hover {
-     scale: 1.1;
-    
-}
-

@@ -6,10 +6,12 @@ import {
   RESET,
 } from "../redux/action-types";
 
-let initialState = {allCharacters: [], favorites: []};
+const initialState = {
+  allCharacters: [], // Siempre mantiene la lista original intacta
+  favorites: []      // Lista que se modifica (filtra/ordena)
+};
 
 function rootReducer(state = initialState, action) {
-  let sorted;
   switch (action.type) {
     case ADD_TO_FAVORITES:
       return {
@@ -19,13 +21,18 @@ function rootReducer(state = initialState, action) {
       };
 
     case REMOVE_FAVORITE:
+      // Filtramos directamente aquí para simplificar
+      const updatedFavorites = state.allCharacters.filter(
+        (char) => char.id !== action.payload
+      );
       return {
         ...state,
-        favorites: action.payload,
-        allCharacters: action.payload,
+        favorites: updatedFavorites,
+        allCharacters: updatedFavorites,
       };
 
     case FILTER:
+      // Filtramos sobre la copia original (allCharacters)
       return {
         ...state,
         favorites: state.allCharacters.filter(
@@ -34,21 +41,22 @@ function rootReducer(state = initialState, action) {
       };
 
     case SORT:
-      if (action.payload === "Ascendente") {
-        sorted = state.favorites.sort((a, b) => (a.id > b.id ? 1 : -1));
-      } else {
-        sorted = state.favorites.sort((a, b) => (b.id > a.id ? 1 : -1));
-      }
+      // Creamos una copia con [...] antes de ordenar para no mutar el estado
+      const sorted = [...state.favorites].sort((a, b) => {
+        return action.payload === "Ascendente" 
+          ? a.id - b.id 
+          : b.id - a.id;
+      });
 
       return {
         ...state,
-        favorites: [...sorted],
+        favorites: sorted,
       };
 
     case RESET:
       return {
         ...state,
-        favorites: state.allCharacters,
+        favorites: [...state.allCharacters], // Devolvemos la lista original
       };
 
     default:

@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'RickAndMorty';
+  src: url('../../assets/font/get_schwifty.ttf') format('truetype');
+}
+
+.title {
+  font-family: 'RickAndMorty', sans-serif;
+  font-size: 3rem;
+  color: #00F8FF;
+  text-shadow: 3px 3px 0px #000, -3px -3px 0px #000, 3px -3px 0px #000, -3px 3px 0px #000;
+  text-align: center;
+}

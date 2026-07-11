@@ -1,6 +1,6 @@
 // import {connect} from "react-redux";
-import {useSelector, useDispatch} from "react-redux";
-import {sortById, filterByGender, reset} from "../../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import { sortById, filterByGender, reset, removeFav } from "../../redux/actions";
 import Card from "../card/Card";
 
 function Favorites() {
@@ -21,33 +21,36 @@ function Favorites() {
 
   return (
     <div>
-      <select placeholder="Gender" onChange={filterHandler}>
+      {/* ... tus selects y botones ... */}
+      <select onChange={filterHandler}>
+        <option value="all">Gender</option> {/* Agregué una opción por defecto */}
         {["Male", "Female", "unknown", "Genderless"].map((gender) => (
-          <option key={gender} value={gender}>
-            {gender}
-          </option>
+          <option key={gender} value={gender}>{gender}</option>
         ))}
       </select>
-      <select placeholder="Sort" onChange={sortHandler}>
-        {["Ascendente", "Descendente"].map((order) => (
-          <option key={order} value={order}>
-            {order}
-          </option>
-        ))}
-      </select>
-      <button onClick={resetHandler}>RESET</button>
-     { myFavorites?.map(fav => {
-            return (
-              <Card
-              key={fav.id}
-              id={fav.id}
-              name={fav.name}
-              species={fav.species}
-              gender={fav.gender}
-              image={fav.image}
-              onClose={fav.onClose} />
-              )})}
       
+      <select onChange={sortHandler}>
+        <option value="Ascendente">Ascendente</option>
+        <option value="Descendente">Descendente</option>
+      </select>
+      
+      <button onClick={resetHandler}>RESET</button>
+
+      {/* Mapeo de favoritos */}
+      <div className="cards-container"> {/* Asumo que tienes un contenedor para las cards */}
+        {myFavorites?.map((fav) => (
+          <Card
+            key={fav.id}
+            id={fav.id}
+            name={fav.name}
+            species={fav.species}
+            gender={fav.gender}
+            image={fav.image}
+            // AQUÍ LA CORRECCIÓN: pasamos la función que elimina el favorito
+            onClose={() => dispatch(removeFav(fav.id))} 
+          />
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,30 +1,27 @@
-import Card from '../card/Card';
+import React from 'react';
+import Card from '../card/Card'; // Importación correcta (sube un nivel, entra en card)
 import style from './Cards.module.css';
 
-export default function Cards({character, onClose}) {
 
+export default function Cards({ characters, onClose }) { 
     return ( 
         <div className={style.body}>
-         <div className={style.cardList}>
-          {character?.map(({id, name, status, species, gender, origin, image}) => {
-              return (
-            <Card 
-            // key= {index} 
-            // character={character}
-            // onClose={onClose}
-            key= {id}
-            id= {id}
-            name= {name}
-            status= {status}
-            gender= {gender}
-            species= {species}
-            image= {image}
-            origin={origin.name}
-            onClose= {onClose}
-            />
-             ) })}
-         </div>
-         </div>
-         );
-         
+           <div className={style.cardList}>
+            
+            {characters?.map((char) => (
+                <Card 
+                    key={char.id}
+                    id={char.id}
+                    name={char.name}
+                    status={char.status}
+                    species={char.species}
+                    gender={char.gender}
+                    origin={char.origin} 
+                    image={char.image}
+                    onClose={onClose}
+                />
+            ))}
+           </div>
+        </div>
+    );
 }

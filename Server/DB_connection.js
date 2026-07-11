@@ -1,22 +1,24 @@
-require ('dotenev').config();
-const {Sequilize} =require('sequilize');
+require('dotenv').config({ path: './src/.env' });
+const { Sequelize } = require('sequelize');
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
-const modelUser = require ('./models/User');
-const modelFavorite = require ('./models/Favorite');
 
-const sequilize = new Sequilize(
- `postgress://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/rickandmorty`,
- { logging: falsse, native: false }
+// const modelUser = require('./src/models/User');
+// const modelFavorite = require('./src/models/Favorite');
+
+const sequelize = new Sequelize(
+   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/rickandmorty`,
+   { logging: false, native: false }
 );
 
-modelUser(sequilize);
-modelFavorite(sequilize);
+// COMENTAMOS ESTO TAMBIÉN PARA QUE NO SE ROMPA:
+// modelUser(sequelize);
+// modelFavorite(sequelize);
 
-const { User, Favorite }= sequilize.models;
-User.belongsToMany(Favorite, {through: 'user_favorite'});
-Favorite.belongsToMany(User, {through: 'user_favorite'});
+// const { User, Favorite } = sequelize.models;
+// User.belongsToMany(Favorite, { through: 'user_favorite' });
+// Favorite.belongsToMany(User, { through: 'user_favorite' });
 
 module.exports = {
-    ...sequilize.models,
-    conn: sequilize,
+    // ...sequelize.models,
+    conn: sequelize,
 };

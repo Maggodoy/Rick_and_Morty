@@ -1,74 +1,67 @@
-import {useState} from "react";
-import {validar} from "../validation/Validation";
+import { useState } from "react";
+import { validar } from "../validation/Validation";
 import style from "./form.module.css";
 
-function Login({login}) {
+function Login({ login }) {
   const [userData, setUserData] = useState({
-    email: " ",
-    password: " ",
+    email: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({
-    email: "Email required", //
-    password: "Password required", //
+    email: "",
+    password: "",
   });
 
   function inputHandler(e) {
+    const { name, value } = e.target;
     setUserData({
       ...userData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
-
     setErrors(
       validar({
         ...userData,
-        [e.target.name]: e.target.value,
+        [name]: value,
       })
     );
   }
 
   function submitHandler(e) {
     e.preventDefault();
-
     login(userData);
   }
 
-  function disableHandler() {
-    for (let error in errors) {
-      if (errors[error] !== "") return true;
-    }
-    return false; // Habilitar el botón si no se encontraron errores no vacíos.
-  }
-  
   return (
-    <div className={style.body}>
-      <form className={style.formConteiner}onSubmit={submitHandler}>
-        <div>
-          <label className={style.font}>USERNAME</label>
-          <input className={style.input}
-            type="text"
+    // IMPORTANTE: Este div es el que tiene la imagen de fondo y centra todo
+    <div className={style.pageContainer}> 
+      <form className={style.formConteiner} onSubmit={submitHandler}>
+        
+        <div className={style.formGroup}>
+          <label className={style.label}>USERNAME</label>
+          <input 
+            type="text" 
             name="email"
             value={userData.email}
             onChange={inputHandler}
-            placeholder="email"
+            className={style.input} 
           />
-          <span>{errors.email}</span>
+          {errors.email && <span className={style.error}>{errors.email}</span>}
         </div>
-        <div>
-          <label className={style.font}>PASSWORD</label>
-          <input className={style.input}
+
+        <div className={style.formGroup}>
+          <label className={style.label}>PASSWORD</label>
+          <input 
+            type="password" 
             name="password"
-            type="password"
             value={userData.password}
             onChange={inputHandler}
-            placeholder="Escribe tu nombre"
+            className={style.input} 
           />
+          {errors.password && <span className={style.error}>{errors.password}</span>}
         </div>
-        {errors.password && <span>{errors.password}</span>}
-        {/* {errors.password || errors.email ? null : (
-          <button type="submit">SUBMIT</button>
-        )} */}
-        <button className={style.buttonSubmit} disabled={disableHandler()} type="submit">
+
+        <button type="submit" className={style.buttonSubmit}>
           SUBMIT
         </button>
       </form>

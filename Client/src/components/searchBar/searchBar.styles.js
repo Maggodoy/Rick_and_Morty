@@ -1,61 +1,59 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const SearchContainer = styled.div`
-  margin-top: 30px;
-  height: 30px;
-  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 25px;
-  justify-content: space-around;
-  align-items: center; 
-  background-color: #62F423; 
-  border-radius: 10% 10% 10% 10%; 
-  border-inline: 5px inset #52FF07;
-  cursor: pointer; 
-  color: rgba(122, 17, 163) ; 
-  font-size: 10px; 
-  font-weight: bold; 
-  transition: background-color 0.3s ease; 
-  opacity: 0.3;
-  
+  margin: 30px auto 25px auto;
+  width: 90%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.1); /* Efecto Glassmorphism */
+  backdrop-filter: blur(8px);
+  padding: 4px;
+  border-radius: 50px; /* Estilo píldora moderno */
+  border: 1px solid rgba(14, 236, 14, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+
   &:hover {
-    background-color: #0056b3; /* Cambia el color de fondo al pasar el mouse */
+    border-color: rgba(14, 236, 14, 0.8);
+    box-shadow: 0 0 15px rgba(14, 236, 14, 0.2);
   }
 `;
 
-
 export const SearchInput = styled.input`
-  width: 90%;
-  border: 3px solid rgba(122, 17, 163); 
-  border-radius: 7px 0 0 7px;
-  box-sizing: border-box;
-  box-shadow: 10px 10px 20px rgba(122, 17, 163);
-  padding: 6px 1px; 
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
 `;
 
 export const SearchIconContainer = styled.div`
-   position: relative;
-   display: flex;
-   aling-items: center;
-   justify-content: center;
-   cursor: pointer;
-   background-color: rgba(122, 17, 163, 0.5);
-   padding: 10px;
-   border: solid rgba(122, 17, 163, 0.8) 5px;
-   border-radius: 0 7px 7px 0;
-
-   &:hover {
-    box-shadow: insert 0 0 10px rgba(122, 17, 163);
-   }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 export const SearchIcon = styled.button`
   width: 90px;
-  heigth: 20px;
-  fill: rgba(122, 17, 163, 0.7);
+  height: 30px;
+  background-color: #62F423;
+  border: none;
+  border-radius: 50px;
+  color: #6c3483;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 
   &:hover {
-     scale: 1.1;
+    transform: scale(1.05);
   }
-  `;
+`;
